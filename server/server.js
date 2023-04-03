@@ -9,9 +9,11 @@ import path from 'path';
 
 import authRoutes from './app/auth/auth.routes.js';
 import { errorHandler, notFound } from './app/auth/middlewares/error.middleware.js';
+import exerciseRoutes from './app/exercise/exercise.routes.js';
 import { prisma } from './app/prisma.js';
 import userRoutes from './app/user/user.routes.js';
 import toJson from './app/utils/index.js';
+import workoutRoutes from './app/workout/workout.routes.js';
 
 dotenv.config();
 const app = express();
@@ -32,7 +34,8 @@ async function main() {
 
     app.use('/api/v1/auth', authRoutes);
     app.use('/api/v1/users', userRoutes);
-
+    app.use('/api/v1/exercises', exerciseRoutes);
+    app.use('/api/v1/workouts', workoutRoutes);
     app.use(notFound);
     app.use(errorHandler);
 
