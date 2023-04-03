@@ -10,6 +10,7 @@ import path from 'path';
 import authRoutes from './app/auth/auth.routes.js';
 import { errorHandler, notFound } from './app/auth/middlewares/error.middleware.js';
 import { prisma } from './app/prisma.js';
+import userRoutes from './app/user/user.routes.js';
 import toJson from './app/utils/index.js';
 
 dotenv.config();
@@ -29,11 +30,8 @@ async function main() {
     const __dirname = path.resolve();
     app.use('/uploads', express.static(path.join(__dirname, '/uploads/')));
 
-    try {
-      app.use('/api/v1/auth', authRoutes);
-    } catch (e) {
-      console.log(e.message, 'эошибка здесь');
-    }
+    app.use('/api/v1/auth', authRoutes);
+    app.use('/api/v1/users', userRoutes);
 
     app.use(notFound);
     app.use(errorHandler);
