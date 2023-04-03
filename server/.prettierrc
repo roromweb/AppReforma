@@ -1,0 +1,19 @@
+{
+    "semi": true,
+    "tabWidth": 2,
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "useTabs": false,
+    "arrowParens": "always",
+    "importOrder": [
+        "<THIRD_PARTY_MODULES>",
+        "/routes/",
+        "/middleware/",
+        "^../(.*)",
+        "^./(.*)"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}
