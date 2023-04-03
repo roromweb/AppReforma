@@ -8,27 +8,36 @@
     "dev": "babel-node ./server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "workout",
+    "reforma"
+  ],
   "author": "roromweb",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/node": "^7.20.7",
     "@babel/preset-env": "^7.21.4",
+    "@prisma/client": "^4.12.0",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@typescript-eslint/parser": "^5.57.0",
     "babel-loader": "^9.1.2",
+    "colors": "^1.4.0",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
     "nodemon": "^2.0.22",
     "prettier": "^2.8.7",
+    "prettier-plugin-prisma": "^4.12.0",
     "prisma": "^4.12.0"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "argon2": "^0.30.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.10.0",
     "pg-hstore": "^2.3.4"
