@@ -1,5 +1,7 @@
 import { prisma } from '../prisma.js';
 
+import { calculateMinute } from './utils/calc-minute.js';
+
 // @desc    Get new Workout
 // @route   POST /api/v1/workouts
 // @access  Private
@@ -80,8 +82,8 @@ export const updateWorkout = async (req, res) => {
         },
       },
     });
-
-    res.json(workoutFind);
+    const minutes = calculateMinute(workout.exercises.length);
+    res.json({ ...workout, minutes });
   } catch (e) {
     res.status(404).json({ message: 'Workout not found' });
     console.log(e.name, e.message);
