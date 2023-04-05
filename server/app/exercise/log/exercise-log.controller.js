@@ -37,6 +37,7 @@ export const createNewExerciseLog = async (req, res) => {
         },
       },
       include: {
+        exercise: true,
         times: true,
       },
     });

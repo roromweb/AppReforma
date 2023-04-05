@@ -1,31 +1,45 @@
-import { Exercise, ExerciseLog, ExerciseTime, User } from '../../../db/models';
-
 // @desc    Get  exerciseLog
-// @route   GET /api/exercises/log/:id
+// @route   GET /api/v1/exercises/log/:id
 // @access  Private
+import { prisma } from '../../prisma.js';
+
 import { addPrevValues } from './add-prev-values.util.js';
 
 export const getExerciseLog = async (req, res) => {
   try {
-    const exerciseLog = await Exercise.findOne({
+    const exerciseLog = await prisma.exerciseLog.findUnique({
       where: { id: +req.params.id },
+      include: {
+        exercise: true,
+        times: {
+          orderBy: {
+            id: 'asc',
+          },
+        },
+      },
     });
+
     if (!exerciseLog) {
       res.status(404);
       throw new Error('Exercise Log not found');
     }
 
-    const prevExerciseLog = await ExerciseLog.findOne({
+    const prevExerciseLog = await prisma.exerciseLog.findFirst({
       where: {
-        userId: 1,
+        exerciseId: exerciseLog.exerciseId,
+        userId: req.user.id,
         isCompleted: true,
       },
-      order: [['createdAt', 'DESC']],
-      include: [{ model: ExerciseTime }],
+      orderBy: {
+        createdAt: 'desc',
+      },
+      include: {
+        times: true,
+      },
     });
-
+    console.log(prevExerciseLog);
     res.json({
-      exerciseLog,
+      ...exerciseLog,
       times: addPrevValues(exerciseLog, prevExerciseLog),
     });
   } catch (e) {

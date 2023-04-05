@@ -36,6 +36,7 @@ async function main() {
     app.use('/api/v1/users', userRoutes);
     app.use('/api/v1/exercises', exerciseRoutes);
     app.use('/api/v1/workouts', workoutRoutes);
+
     app.use(notFound);
     app.use(errorHandler);
 
