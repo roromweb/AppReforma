@@ -7,12 +7,12 @@ export const updateCompletedWorkoutLog = async (req, res) => {
   try {
     const { weight, repeat, isCompleted } = req.body;
 
-    const workoutLogTime = await prisma.workoutTime.update({
+    const workoutLogTime = await prisma.workoutLog.update({
       where: {
         id: +req.params.id,
       },
       data: {
-        isCompleted,
+        isCompleted: true,
       },
     });
     res.json(workoutLogTime);

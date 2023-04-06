@@ -29,6 +29,6 @@ router
 
 router.route('/log/:id').get(protect, getWorkoutLog).post(protect, createNewWorkoutLog);
 
-router.route('/log/complete/:id').patch(protect, updateCompletedWorkoutLog);
+router.route('/log/completed/:id').patch(protect, updateCompletedWorkoutLog);
 
 export default router;
