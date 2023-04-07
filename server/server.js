@@ -32,7 +32,12 @@ async function main() {
     const __dirname = path.resolve();
     app.use('/uploads', express.static(path.join(__dirname, '/uploads/')));
 
-    app.use('/api/v1/auth', authRoutes);
+    try {
+      app.use('/api/v1/auth', authRoutes);
+    } catch (e) {
+      console.log('здесь!!!!!!1');
+    }
+
     app.use('/api/v1/users', userRoutes);
     app.use('/api/v1/exercises', exerciseRoutes);
     app.use('/api/v1/workouts', workoutRoutes);

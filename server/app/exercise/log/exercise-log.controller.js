@@ -44,7 +44,7 @@ export const createNewExerciseLog = async (req, res) => {
 
     res.json(exerciseLog);
   } catch (e) {
-    res.status(404);
+    res.status(404).json({"message":"ExerciseLog not create"});
     console.log(e.name, e.message);
   }
 };

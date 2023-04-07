@@ -61,7 +61,7 @@ export const updateExercise = async (req, res) => {
 
     res.json(exerciseFind);
   } catch (e) {
-    res.status(404).json({ message: 'Exercise not found' });
+    res.status(404).json({ message: 'Exercise not found and did not updated' });
     console.log(e.name, e.message);
   }
 };

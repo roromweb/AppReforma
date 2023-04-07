@@ -19,13 +19,20 @@ export const authUser = async (req, res) => {
         email,
       },
     });
-    console.log(user);
+
+    if (email === '' && password === '') {
+      return res.status(200).json({ message: 'Type your email and password!' });
+    }
+    if (password === '') {
+      return res.status(200).json({ message: "You don't type a password! " });
+    }
+
     const isValidPassword = await verify(user.password, password);
     if (user && isValidPassword) {
       const token = generateToken(user.id);
       res.json({ user, token });
     } else {
-      res.status(401);
+      res.status(401).json({ mesage: 'Email and password are not correct' });
       throw new Error('Email and password are not correct');
     }
   } catch (e) {
@@ -40,7 +47,7 @@ export const authUser = async (req, res) => {
 export const registerUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
+    console.log(email, password);
     const isHaveUser = await prisma.user.findUnique({
       where: {
         email,
@@ -51,13 +58,13 @@ export const registerUser = async (req, res) => {
       res.status(400).json({ message: 'User already exists' });
       throw new Error('User already exists');
     }
+
     const user = await prisma.user.create({
       data: {
         name: faker.name.fullName(),
         email,
         password: await hash(password),
       },
-      select: { userFields },
     });
 
     const token = generateToken(user.id);

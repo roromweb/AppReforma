@@ -32,7 +32,7 @@ export const getWorkoutLog = async (req, res) => {
       minute: calculateMinute(workoutLog.workout.exercises.length),
     });
   } catch (e) {
-    res.status(404);
+    res.status(404).json({ message: 'Workout Log not found' });
     console.log(e.name, e.message);
   }
 };

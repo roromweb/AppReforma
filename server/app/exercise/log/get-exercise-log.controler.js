@@ -43,7 +43,7 @@ export const getExerciseLog = async (req, res) => {
       times: addPrevValues(exerciseLog, prevExerciseLog),
     });
   } catch (e) {
-    res.status(404);
+    res.status(404).json({ message: 'ExerciseLog not found' });
     console.log(e.name, e.message);
   }
 };
