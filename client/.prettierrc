@@ -7,5 +7,15 @@
     "bracketSpacing": true,
     "useTabs": false,
     "arrowParens": "always",
-    "jsxSingleQuote": false
+    "jsxSingleQuote": false,
+    "importOrder": [
+        "<THIRD_PARTY_MODULES>",
+        "/hooks/",
+        "/components/",
+        "/module.scss/",
+        "^../(.*)",
+        "^./(.*)"
+    ],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
 }
