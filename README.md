@@ -1,7 +1,6 @@
 # AppReforma
 <h3>FullStack приложение для аналитики и ведения тренировок</h3>
-Stack: React, Redux-Toolkit, Express.js, PostgreSql, Prisma ORM, JWT Bearer Token.
-
+Используемый стек: JavaScript, React, Redux, thunk, HTML, CSS, Node.JS, PostgreSQL, Express.js, PostgreSql, Prisma ORM, JWT Bearer Token.
 
 На данный момент реализована только backend часть приложения (прописан роутинг, endpoints на crud операции с сохраненим в бд, 
 аутентификация и регистрация пользователей, получение статистики по упражнениям и тренировкам по каждому пользователю и тд).
